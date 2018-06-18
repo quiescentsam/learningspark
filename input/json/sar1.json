@@ -1,0 +1,2 @@
+{"eventid": "3", "eventype": "dns", "is_safe": 0, "dnsserver": "server1"}
+{"eventid": "4", "eventype": "dns", "is_safe": 1, "dnsserver": "server2"}
