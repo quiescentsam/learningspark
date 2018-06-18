@@ -7,7 +7,15 @@ import spark.padhai.ReadJson
 
 object Main {
   def main(args: Array[String]): Unit = {
-    val spark = SparkSession.builder.master("local").getOrCreate()
+    val spark = SparkSession
+      .builder
+      .master("local")
+      .appName("Test App")  // Application Name
+      .enableHiveSupport()  // to enable HiveContext
+      .getOrCreate()
+
+
+
     println(spark.sessionState)
     val data = ReadJson.readJsonFile(spark,"input/json/*.json")
     data.printSchema()
