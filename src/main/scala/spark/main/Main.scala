@@ -25,6 +25,6 @@ object Main {
 
     val conf = new Configuration()
     val fileSystem = FileSystem.get(conf)
-    fileSystem.rename("part-00000-2d68a51e-efc3-449d-8f98-e5e85bc9e513-c000.snappy.parquet","part-00000-2d68a51e-efc3-449d-8f98-e5e85bc9e513-c000.snappy.parquet2")
+    fileSystem.rename('/user','/user/')
     //fileSystem.rename(new Path(existinghdfs_dirpath+oldname), new Path(newhdfs_dirPath+newname))
 }}
