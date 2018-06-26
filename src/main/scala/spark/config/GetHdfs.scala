@@ -4,6 +4,9 @@ import org.apache.hadoop.fs.FileSystem
 import org.apache.spark.sql.SparkSession
 import org.apache.hadoop.conf.Configuration
 
+import org.apache.spark.internal.Logging
+
+
 object GetHdfs {
   def getHdfsFile(spark: SparkSession): Unit = {
     // Get HDFS fs

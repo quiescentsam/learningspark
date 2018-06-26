@@ -11,7 +11,7 @@ import spark.padhai.ReadJson
 import org.apache.hadoop.fs.{FileSystem, Path}
 import org.apache.hadoop.io.IOUtils
 
-object Main {
+object Main extends Logging {
   def main(args: Array[String]): Unit = {
     val spark = SparkSession
       .builder
@@ -30,27 +30,33 @@ object Main {
         println(spark.read.parquet("output/parquet/test").count())*/
 
     val conf = new Configuration()
-    conf.addResource("/usr/local/hadoop/etc/hadoop/core-site.xml")
-    conf.addResource("/usr/local/hadoop/etc/hadoop/hdfs-site.xml")
+    //conf.addResource("/usr/local/hadoop/etc/hadoop/core-site.xml")
+    //conf.addResource("/usr/local/hadoop/etc/hadoop/hdfs-site.xml")
     //val fs = FileSystem.get(URI.create(uri), conf)
 
+    logInfo("configuration resource added " +conf)
 
 
 
 
     import org.apache.hadoop.fs.FileSystem
-//    val fileSystem = FileSystem.get(new URI("hdfs://localhost:9000"), conf)
+    val hdfs = FileSystem.get(new URI("hdfs://localhost:9000"), conf)
     val sourcePath = new Path("/Users/ssiddiqui/Desktop/SAMEER2.0/WORK/CODE/learningspark/input/json/")
-    val destPath = new Path("hdfs://localhost:9000/user/test1/")
+    val destPath = new Path("hdfs://localhost:9000/user/test22/")
 
-    hdfs.mkdirs(destPath)
-    hdfs.listFiles(destPath, false)
-    hdfs.copyFromLocalFile(sourcePath, destPath)
-    //fileSystem.listStatus(new Path("file:///user/json/test"))
+    logWarning("source path " +sourcePath.toString + " destpath : "+destPath)
+    logError("source path " +sourcePath.toString + " destpath : "+destPath)
 
-    //fileSystem.copyFromLocalFile("",'/user/sameer')
-    hdfs.rename(new Path("/user/test/json/sar2.json"),new Path("/user/test/json/sameer.json"))    //fileSystem.rename(new Path(existinghdfs_dirpath+oldname), new Path(newhdfs_dirPath+newname))
-  }
+
+
+     hdfs.mkdirs(destPath)
+       hdfs.listFiles(destPath, false)
+       hdfs.copyFromLocalFile(sourcePath, destPath)
+      /* //fileSystem.listStatus(new Path("file:///user/json/test"))
+
+       //fileSystem.copyFromLocalFile("",'/user/sameer')
+       hdfs.rename(new Path("/user/test/json/sar2.json"),new Path("/user/test/json/sameer.json"))    //fileSystem.rename(new Path(existinghdfs_dirpath+oldname), new Path(newhdfs_dirPath+newname))
+   */  }
 }
 
 
