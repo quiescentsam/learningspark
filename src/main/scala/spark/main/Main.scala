@@ -6,8 +6,8 @@ import java.net.URI
 import org.apache.hadoop.conf.Configuration
 import org.apache.spark.sql.{SaveMode, SparkSession}
 import org.apache.spark.internal.Logging
-import spark.likhai.WriteParquet
-import spark.padhai.ReadFile
+import spark.writedf.WriteParquet
+import spark.readdf.ReadFile
 import org.apache.hadoop.fs.{FileSystem, Path}
 import org.apache.hadoop.io.IOUtils
 import spark.process.Processor
